@@ -28,7 +28,7 @@ public class ViagemService {
     public Viagem verifyViagem(Integer viagemId) {
         Viagem viagem = viagemRespository.findById(viagemId)
                 .orElseThrow(() -> new RuntimeException("Viagem não encontrada com o ID: " + viagemId));
-        viagem.setStatus(ViagemStatus.VERIFIED);
+        viagem.setStatus(ViagemStatus.CONFIRMADO);
         return viagemRespository.save(viagem);
     }
 }
