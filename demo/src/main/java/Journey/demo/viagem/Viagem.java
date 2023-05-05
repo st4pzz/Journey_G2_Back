@@ -21,6 +21,4 @@ public class Viagem {
     private Integer precoTotal;
     
     private ViagemStatus status;
-
-
 }
