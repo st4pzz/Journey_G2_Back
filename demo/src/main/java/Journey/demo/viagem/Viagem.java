@@ -14,11 +14,9 @@ public class Viagem {
     private Integer id;
     private Integer idMotorista;
     private Integer dataStart;
-    private Integer dataEnd;
     private Integer origem;
     private Integer destino;
     private Integer horasTotal;
     private Integer precoTotal;
-    
     private ViagemStatus status;
 }
