@@ -12,13 +12,13 @@ public class Viagem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private Integer idMotorista;
-    private Integer dataStart;
-    private Integer dataEnd;
-    private Integer origem;
-    private Integer destino;
-    private Integer horasTotal;
+
+    private String idMotorista;
+    private String dataStart;
+    private String origem;
+    private String  destino;
+    private String horasStart;
+    private String tempoTotal;
     private Integer precoTotal;
-    
     private ViagemStatus status;
 }

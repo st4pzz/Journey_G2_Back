@@ -31,4 +31,22 @@ public class ViagemService {
         viagem.setStatus(ViagemStatus.CONFIRMADO);
         return viagemRespository.save(viagem);
     }
+
+    public Viagem cancelarViagem(Integer viagemId){
+        Viagem viagem = viagemRespository.findById(viagemId)
+        .orElseThrow(() -> new RuntimeException("Viagem não encontrada com o ID: " + viagemId));
+        viagem.setStatus(ViagemStatus.FINALIZADO);
+        viagemRespository.save(viagem);
+        return viagem;
+        
+    }
+
+    public Integer ViagemIdMotoristaEmProgresso(String idMotorista){
+        List<Viagem> viagems = viagemRespository.findAll();
+        List<Viagem> viagemMotoristaConfirmado = (viagems.stream().filter(viagem -> viagem.getIdMotorista().equals(idMotorista) && viagem.getStatus().equals(ViagemStatus.CONFIRMADO))).collect(Collectors.toList());
+        if (viagemMotoristaConfirmado.isEmpty()) {
+            throw new RuntimeException("Nenhuma viagem em progresso encontrada para o motorista com o ID: " + idMotorista);
+        }
+        return viagemMotoristaConfirmado.get(0).getId();
+    }
 }
