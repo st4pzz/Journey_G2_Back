@@ -44,7 +44,9 @@ public class ViagemService {
     public Integer ViagemIdMotoristaEmProgresso(String idMotorista){
         List<Viagem> viagems = viagemRespository.findAll();
         List<Viagem> viagemMotoristaConfirmado = (viagems.stream().filter(viagem -> viagem.getIdMotorista().equals(idMotorista) && viagem.getStatus().equals(ViagemStatus.CONFIRMADO))).collect(Collectors.toList());
+        if (viagemMotoristaConfirmado.isEmpty()) {
+            throw new RuntimeException("Nenhuma viagem em progresso encontrada para o motorista com o ID: " + idMotorista);
+        }
         return viagemMotoristaConfirmado.get(0).getId();
-        
     }
 }
