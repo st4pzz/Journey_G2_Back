@@ -133,17 +133,18 @@ public class ViagemControllertest {
     void ViagemIdMotoristaEmProgresso() throws Exception {
         String idMotorista = "motorista123"; // insira um id de motorista válido
         Integer viagemId = 1; // insira um id de viagem válido
-
+    
         Mockito.when(viagemService.ViagemIdMotoristaEmProgresso(idMotorista)).thenReturn(viagemId);
-
+    
         MvcResult result = mockMvc
-                .perform(MockMvcRequestBuilders.get("/viagem/" + idMotorista + "/emProgresso"))
-                .andExpect(MockMvcResultMatchers.status().isOk())
-                .andReturn();
-
+            .perform(MockMvcRequestBuilders.get("/viagem/" + idMotorista + "/confirmado"))
+            .andExpect(MockMvcResultMatchers.status().isOk())
+            .andReturn();
+    
         String resp = result.getResponse().getContentAsString();
         Assertions.assertEquals(resp, viagemId.toString());
     }
+    
 }
     
 

@@ -26,14 +26,15 @@ class ViagemServiceTest {
         Viagem v1 = new Viagem();
         v1.setId(1);
         v1.setStatus(ViagemStatus.CONFIRMADO);
-        // Set your properties for v1
-
+    
         when(viagemRespository.findById(1)).thenReturn(Optional.of(v1));
-
+        when(viagemRespository.save(any(Viagem.class))).thenAnswer(i -> i.getArguments()[0]);
+    
         boolean resp = viagemService.verifyViagem(1) != null;
-
+    
         Assertions.assertTrue(resp);
     }
+    
 
     @Test
     void contabilizarViagensRealizadasTest() {
