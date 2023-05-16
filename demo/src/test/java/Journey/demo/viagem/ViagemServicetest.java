@@ -80,7 +80,8 @@ class ViagemServiceTest {
         viagens.add(v2);
     
         when(viagemRespository.findAll()).thenReturn(viagens);
-    
+
+        //:)
         Integer resp = viagemService.ViagemIdMotoristaEmProgresso("1");
     
         Assertions.assertEquals(v1.getId(), resp);
